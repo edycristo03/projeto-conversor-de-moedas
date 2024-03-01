@@ -56,7 +56,7 @@ button {
     width: 100%;
     height: 48px;
     flex-shrink: 0;
-    border-radius: 6px;
+    border-radius: 5px;
     background: #99E3F3;
     color: #772FD3;
     font-size: 20px;
@@ -88,7 +88,9 @@ section {
 
 
 .seta-img{
-    margin: 15px 0;
+    margin:15px auto;
+    
+    size-adjust: 10px;
 }
 
 
@@ -100,14 +102,20 @@ section {
 }
 
 .currency{
-color:#777;
-font-size: 14px;
+color:#0006a0;
+font-size: 25px;
 font-weight: 400px;
 }
 
+.real-img{
+    font-size: 1px;
+}
+
+
+
 .currency-value .currency-value-to-convert{
-    color: #555;
-    font-size: 20px;
+    color: #4a4a4a;
+    font-size: 30px;
     font-weight: 700;
     
 }

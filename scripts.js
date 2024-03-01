@@ -1,16 +1,22 @@
 const convertButton = document.querySelector('.convert-button')
 const currencySelect = document.querySelector('.currency-select-converted')
 
-function convertValues() {
+const convertValues = async () => {
     const inputCurrencyValue = document.querySelector('.input-currency').value
     const currencyValueToConvert = document.querySelector('.currency-value-to-convert')
     const currencyValueConverted = document.querySelector('.currency-value')
 
-    console.log(currencySelect.value)
-    const dolarToday = 4.94
-    const euroToday = 5.35
+         
+    const data = await fetch(" https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL")
+    .then(resp => resp.json())
+
+        
+   
+    const dolarToday = data.USDBRL.high
+    const euroToday = data.EURBRL.high
     const libraToday = 6.28
-    const bitcoinToday = 211.02762
+    const bitcoinToday = data.BTCBRL.high
+
     
 
 
@@ -19,7 +25,7 @@ function convertValues() {
         currencyValueConverted.innerHTML = new Intl.NumberFormat('en-US', {
             style: 'currency', currency: 'USD'
         }).format(inputCurrencyValue / dolarToday)
-       
+
 
     }
 
@@ -55,36 +61,36 @@ function convertValues() {
 
 }
 
-function changeCurrency(){
+function changeCurrency() {
     const currencyName = document.getElementById('currency-name')
     const currencyImage = document.querySelector('.currency-img')
-    
+
     if (currencySelect.value == 'dolar') {
-        currencyName.innerHTML ='Dólar Americano'
+        currencyName.innerHTML = 'Dólar Americano'
         currencyImage.src = './assets/dolar.png'
 
-    }    
-     
+    }
+
     if (currencySelect.value == 'euro') {
-        currencyName.innerHTML ='Euro'
+        currencyName.innerHTML = 'Euro'
         currencyImage.src = './assets/euro.png'
 
-    }    
+    }
 
     if (currencySelect.value == 'libra') {
-        currencyName.innerHTML ='Libra'
+        currencyName.innerHTML = 'Libra'
         currencyImage.src = './assets/libra.png'
 
-    }    
+    }
 
     if (currencySelect.value == 'bitcoin') {
-        currencyName.innerHTML ='BTC'
+        currencyName.innerHTML = 'BTC'
         currencyImage.src = './assets/bitcoin.png'
 
-    }    
+    }
 
 
-    convertValues() 
+    convertValues()
 
 }
 
